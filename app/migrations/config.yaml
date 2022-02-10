@@ -1,0 +1,8 @@
+databases:
+  postgres:
+    driver: postgres
+    database: bigote
+    user: postgres
+    password: postgres 
+    host: bigote-pg
+    port: 5432 
