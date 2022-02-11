@@ -5,17 +5,29 @@ services:
     build:
       context: .
       dockerfile: dockers/bigote-fetcher/Dockerfile
-    tty: true 
     restart: always
     volumes: 
       - ./app:/app
     depends_on:
       - bigote-pg
 
+  bigote-recv:
+    container_name: bigote-recv
+    build:
+      context: .
+      dockerfile: dockers/bigote-recv/Dockerfile
+    tty: true 
+    restart: always
+    volumes: 
+      - ./app:/app
+    depends_on:
+      - bigote-pg
+    ports:
+      - 3000:3000
+
   bigote-pg:
     image: postgres:12.2-alpine
     container_name: bigote-pg
-    tty: true
     restart: always
     volumes:
       - bigote-pg-data:/var/lib/postgresql/data
