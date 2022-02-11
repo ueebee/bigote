@@ -36,10 +36,6 @@ db = DatabaseManager(db_config)
 Model.set_connection_resolver(db)
 app = FastAPI()
 
-@app.get("/")
-async def hello():
-    return {"message" : "Hello,World"}
-
 @app.post("/currency_pair")
 async def create_currency_pair(currency_pair: CurrencyPair):
     msg = currency_pair.to_msg()
